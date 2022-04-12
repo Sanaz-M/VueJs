@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css" />
   <script src="https://unpkg.com/vue@3"></script>
 
   <title>Vue Mastery</title>
@@ -12,12 +13,39 @@
 
 <body>
   <div id="app">
-    <h1>{{ product }}</h1>
-  </div>
+    <header id="header">
+      <nav>
+        <h2>Simple App</h2>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact</li>
+          <li><span class="cart"><img src="./assets/shopping-cart.png" />{{ cart }} items</span></li>
+        </ul>
+        </nab>
+    </header>
+    <main>
+      <section>
+        <figure class="sockes-images">
+          <img :src="image" />
+        </figure>
+        <article>
+          <h1>{{ product }}</h1>
+          <p v-if="inventory >  5">In Stock</p>
+          <p v-else-if="inventory <=5 && inventory > 0">Almost Sold Out!</p>
+          <p v-else>Out of Stock</p>
+          <ul>
+            <li v-for="detail in details">{{ detail }}</li>
+          </ul>
+          <div v-for="variant in variants" :key="variant.id">{{ variant.color }}</div>
+          <button class="addBtn" v-on:click="addToCart">Add to Cart</button>
+        </article>
+      </section>
+    </main>
 
 
-  <script src="./main.js"></script>
-  </script>
+    <script src="./main.js"></script>
+    </script>
 </body>
 
 </html>
